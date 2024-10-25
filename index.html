@@ -12,6 +12,59 @@
     <script>var coverSupport = 'CSS' in window && typeof CSS.supports === 'function' && (CSS.supports('top: env(a)') || CSS.supports('top: constant(a)'))
     document.write('<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0' + (coverSupport ? ', viewport-fit=cover' : '') + '" />')</script>
     <link rel=stylesheet href=/static/index.2da1efab.css>
+
+    <style>
+        .fullAd{
+            position: fixed;
+            z-index: 2147483647;
+            overflow: hidden;
+            font-size: 0px;
+            top: 0px;
+            left: 0px;
+            width: 100vw;
+            height: 100vh;
+            border: none;
+            background: rgb(255, 255, 255);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            display: none;
+        }
+        .closeMain{
+            display: flex;
+            align-items: center;
+            position: absolute;
+            z-index: 999;
+            right: 16px;
+            top: 12px;
+            color: rgb(255, 255, 255);
+            background: rgb(57, 57, 57);
+            border-radius: 50px;
+        }
+        .closeTxt{
+            font-size: 12px;
+            flex: 1;
+            text-align: center;
+            line-height: 32px;
+            padding: 3px 3px 3px 20px;
+        }
+        .closebt{
+            background: #363636;
+            box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.15);
+            margin-right: 4px;
+            margin-top: 4px;
+            border-radius: 50%;
+            height: 24px;
+            width: 24px;
+            display: inline-block;
+        }
+        .closeImg{
+            height:14px;width:14px;stroke:#E6E6E6;fill:#E6E6E6;stroke-width:1.25;line-height: 0;padding: 4px 5px 6px;
+        }
+        .ads2{
+            padding:0px;position: fixed;bottom: 0;left: 0;z-index: 999;
+        }
+    </style>
 </head>
 <body>
 <noscript><strong>Please enable JavaScript to continue.</strong></noscript>
@@ -104,6 +157,157 @@
         });
     });
 </script>
+
+
+
+
+
+<!--smaatoad--begin-->
+<!--Rich Media-->
+<div id="smaatoad1" style="padding:0px"></div>
+
+<!--MRAID-->
+<div id="smaatoad2" class="ads2"></div>
+
+<!--Rich Media / Video-->
+<div class="fullAd" id="fullAd3">
+    <div id="smaatoad3" style="padding:0px"></div>
+    <div class="closeMain"  onclick="handleButtonClick('fullAd3')">
+        <div class="closeTxt">closeAd</div>
+        <div class="closebt">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14"
+                 class="closeImg"><path d="M3.25,3.25l8.5,8.5M11.75,3.25l-8.5,8.5"></path></svg>
+        </div>
+    </div>
+</div>
+
+<!--MRAID-->
+<div class="fullAd" id="fullAd4">
+    <div id="smaatoad4" style="padding:0px"></div>
+    <div class="closeMain"  onclick="handleButtonClick('fullAd4')">
+        <div class="closeTxt">closeAd</div>
+        <div class="closebt">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14"
+                 class="closeImg"><path d="M3.25,3.25l8.5,8.5M11.75,3.25l-8.5,8.5"></path></svg>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript" src="https://soma-assets.smaato.net/js/smaatoAdTag.js"></script>
+<script>
+    let publisherId=1100057742
+    let  adSpaceId1=138010452
+    let  adSpaceId2=138010453
+    let  adSpaceId3=138010476
+    let  adSpaceId4=138013605
+    let isShow=false
+
+    function handleButtonClick(val) {
+        isShow=false
+        document.getElementById(val).style.display = 'none';
+    }
+    function myJSCallBack(status) {
+        if (status == "SUCCESS") {
+            // TODO Handle ad available (Option)
+        } else if (status == "ERROR") {
+            // TODO Handle not ad available
+        }
+    };
+    <!--Rich Media-->
+    SomaJS.loadAd({
+        adDivId: "smaatoad1",
+        publisherId: publisherId,
+        adSpaceId: adSpaceId1,
+        autoReload: 240,
+        dimension: "xxlarge",
+        dimensionstrict: true,
+        keywords: "cars,shopping",
+        gender: "m",
+        age: 27
+    }, myJSCallBack);
+
+    <!--Static Image-->
+    SomaJS.loadAd({
+        adDivId: "smaatoad2",
+        publisherId: publisherId,
+        adSpaceId: adSpaceId2,
+        autoReload: 240,
+        dimension: "xxlarge",
+        dimensionstrict: true,
+        keywords: "cars,shopping",
+        gender: "m",
+        age: 27
+    }, myJSCallBack);
+
+    // showFullAd3()
+    function showFullAd3() {
+        SomaJS.loadAd({
+            adDivId: "smaatoad3",
+            publisherId: publisherId,
+            adSpaceId: adSpaceId3,
+            autoReload: 0,
+            dimension: "full_640x960",
+            dimensionstrict: true,
+            keywords: "cars,shopping",
+            gender: "m",
+            age: 27
+        }, myJSCallBack3);
+    }
+
+    function myJSCallBack3(status) {
+        console.log('myJSCallBack3',status)
+        if (status == "SUCCESS") {
+            isShow=true
+            document.getElementById('fullAd3').style.display = 'block';
+            // TODO Handle ad available (Option)
+        } else if (status == "ERROR") {
+            // TODO Handle not ad available
+        }
+    };
+    // showFullAd4()
+    function showFullAd4() {
+        SomaJS.loadAd({
+            adDivId: "smaatoad4",
+            publisherId: publisherId,
+            adSpaceId: adSpaceId4,
+            autoReload: 0,
+            dimension: "full_640x960",
+            dimensionstrict: true,
+            keywords: "cars,shopping",
+            gender: "m",
+            age: 27
+        }, myJSCallBack4);
+    }
+
+    function myJSCallBack4(status) {
+        console.log('myJSCallBack4',status)
+        if (status == "SUCCESS") {
+            isShow=true
+            document.getElementById('fullAd4').style.display = 'block';
+            // TODO Handle ad available (Option)
+        } else if (status == "ERROR") {
+            // TODO Handle not ad available
+        }
+    };
+
+
+    //按时间显示
+    let num=0
+    setInterval(function () {
+        num++
+        if(num % 2 == 0 && num>2 && !isShow){
+            showFullAd4()
+        }else if( num>2 && !isShow){
+            showFullAd3()
+        }
+    },30*1000)
+</script>
+<!--smaatoad--end-->
+
+
+
 <script src=/static/js/chunk-vendors.f799320c.js></script>
 <script src=/static/js/index.7738ecef.js></script>
 
